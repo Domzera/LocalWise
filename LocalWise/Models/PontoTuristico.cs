@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using LocalWise.Data.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LocalWise.Models
@@ -11,6 +12,7 @@ namespace LocalWise.Models
         public string? Ativo { get; set; }
         [DataType(DataType.Date)]
         public DateTime DataCadastro { get; set; }
+        public TipoPasseio Tipo { get; set; }//Foi adicionado mas não tem no banco ainda
         public string? Valor { get; set; }
         [ForeignKey("Endereco")]
         public int? EnderecoId { get; set; }

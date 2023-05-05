@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using LocalWise.Data.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection.Metadata.Ecma335;
 
 namespace LocalWise.Models
@@ -7,7 +8,7 @@ namespace LocalWise.Models
     {
         public int Id { get; set; }
         public string? Valor { get; set; }
-        public string? Transport { get; set; }
+        public Transporte Transporte { get; set; }
         [ForeignKey("Guia")]
         public int? GuiaId { get; set; }
         public Guia? Guia { get; set; }

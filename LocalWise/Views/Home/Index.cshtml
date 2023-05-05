@@ -1,8 +1,134 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+ 
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<link rel="stylesheet" href="./css/all.mim.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="./css/bootstrap.css" />
+<link rel="stylesheet" href="./css/index.css" />
+<link rel="stylesheet" href="./css/Style.css" />
+
+<form method="post" action="~/Home/Index/">
+    <div class="col-12">
+        <div class="contentContainer">
+            <section class="left">
+                <div class="inputContainer">
+                    <ul>
+                        <li>
+                            <div class="form-group">
+                                <label for="escolhaLocal">Para qual cidade vamos hoje?</label>
+                                <select name="escolhaLocal" id="escolhaLocal" class="campos">
+                                    <option value="0">Escolha Uma Opção</option>
+                                    <option value="Aparecida">Aparecida</option>
+                                    <option value="Lorena">Lorena</option>
+                                    <option value="Guaratinguetá">Guaratinguetá</option>
+                                    <option value="São Paulo">São Paulo</option>
+                                    <option value="São José">São José</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="contentPessoas" class="form-group ocultar">
+                                <label for="qtdPessoas">Quantas Pessoas Vão?</label>
+                                <input id="qtdPessoas" name="qtdPessoas" type="number" class="form-control teste" />
+                            </div>
+                        </li>
+                        <li>
+                            <div id="contentTransporte" class="form-group ocultar">
+                                <label for="transporte">Qual a Forma de Transporte?</label>
+                                <select ID="transporte" name="transporte" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
+                                    <option Value="0">Escolha Uma Opção</option>
+                                    <option value="Carro">Carro</option>
+                                    <option Value="Micro-onibus">Micro-ônibus</option>
+                                    <option Value="Ônibus">Onibus</option>
+                                    <option Value="Rolê a pé">Rolê a pé</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="contentTipoPasseio" class="form-group ocultar">
+                                <label for="Passeio">Qual o Tipo de Passeio?</label>
+                                <select ID="tipoPasseio" name="tipoPasseio" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
+                                    <option Value="0">Escolha Uma Opção</option>
+                                    <option Value="Religioso">Religioso</option>
+                                    <option Value="Ambiental">Ambiental</option>
+                                    <option Value="Cultural">Cultural</option>
+                                    <option Value="Recreativo">Recreativo</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="contentData" class="form-group ocultar">
+                                <label for="data">Quando Vamos?</label>
+                                <input type="date" id="data" name="dia" min="0" class="campos" />
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div id="contentSubmit" class="ocultar mt-5 text-center">
+                        <button class="btn my-2 my-sm-0 mr-3 confirma" id="" type="submit">Confirmar</button>
+                        <div class="msg"></div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="right">
+                
+            </section>
+
+            
+        </div>
+    </div>
+</form>
+
+<div class="col-12 container p-5">
+    <div class="col-12 text-center" style="font-size:35px;">
+        <p><b>Principais Pontos Turísticos Brasileiros</b></p>
+    </div>
+    <hr />
+    <div class="card-group col-12 row">
+        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+            <div class="card-title" style="font-size:25px;">
+                <p><b>Lençóis Maranhenses</b></p>
+            </div>
+            <p class="text-left p-3" style="font-size:20px;">O Parque Nacional dos Lençóis Maranhenses é uma área protegida na costa atlântica norte do Brasil. É conhecido pela sua vasta paisagem desértica de grandes dunas de areia branca e pelas lagoas sazonais de água da chuva. A Lagoa Azul e a Lagoa Bonita são duas das maiores lagoas. O ecossistema diversificado do parque inclui pântanos de mangais. As cidades vizinhas de Barreirinhas e Santo Amaro do Maranhão servem de porta de entrada para o parque</p>
+        </div>
+        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+            <div class="card-title" style="font-size:25px;">
+                <p><b>Cristo Redentor</b></p>
+            </div>
+            <p class="text-left p-3" style="font-size:20px;">Cristo Redentor é uma estátua art déco que retrata Jesus Cristo, localizada no topo do morro do Corcovado, a 709 metros acima do nível do mar, com vista para parte considerável da cidade brasileira do Rio de Janeiro. Feito de concreto armado e pedra-sabão, tem trinta metros de altura (uma das maiores estátuas do mundo), sem contar os oito metros do pedestal. Seus braços se esticam por 28 metros de largura e a estrutura pesa 1145 toneladas.</p>
+        </div>
+        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+            <div class="card-title" style="font-size:25px;">
+                <p><b>Cataratas Do Iguaçu</b></p>
+            </div>
+            <p class="text-left p-3" style="font-size:20px;">
+                Já imaginou apreciar a vista espetacular das Cataratas do Iguaçu;
+                uma das paisagens mais belas do mundo; em um ambiente onde
+                o ar puro da floresta se confunde com aromas suaves
+                de uma cozinha muito especial?
+
+                Esse lugar existe e está localizado no Parque Nacional do Iguaçu,
+                às margens do Rio Iguaçu, proporcionando vista única da parte
+                superior das famosas Cataratas.
+            </p>
+        </div>
+    </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" defer type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-core-legacy.js" defer type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" defer type="text/javascript" charset="utf-8"></script>
+<script src="https://js.api.here.com/v3/3.1/mapsjs-service-legacy.js" defer type="text/javascript" charset="utf-8"></script>
+
+<!--<script src="../wwwroot/js/jquery-3.6.1.min.js"></script>-->
+<script src="./js/bootstrap.min.js></script>

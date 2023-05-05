@@ -1,0 +1,89 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LocalWise
+build_property.RootNamespace = LocalWise
+build_property.ProjectDir = C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Guia/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Guia/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpYVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Guia/GuiaLista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpYVxHdWlhTGlzdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Guia/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3VpYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Home/Novo-Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3ZvLUluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Turista/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHVyaXN0YVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Turista/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHVyaXN0YVxEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Turista/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHVyaXN0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ue8ky4oaxd
