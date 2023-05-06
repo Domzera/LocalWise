@@ -1,7 +1,15 @@
 ﻿@{
  
 }
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<!-- Mgl CSS -->
+<link href="https://api.wikiocity.com/lib/mlgl/latest/maplibre-gl.css" rel="stylesheet">
+<link href="https://api.wikiocity.com/lib/wm/latest/wikiocity-style.css" rel="stylesheet">
+
+<!-- MglJS -->
+<script src="https://api.wikiocity.com/lib/mlgl/latest/maplibre-gl.js"></script>
+<script src="https://api.wikiocity.com/lib/wm/latest/wikiocity-maps.js"></script>
 
 <link rel="stylesheet" href="./css/all.mim.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -12,114 +20,143 @@
 <link rel="stylesheet" href="./css/index.css" />
 <link rel="stylesheet" href="./css/Style.css" />
 
-<form method="post" action="~/Home/Index/">
-    <div class="col-12">
-        <div class="contentContainer">
-            <section class="left">
-                <div class="inputContainer">
-                    <ul>
-                        <li>
-                            <div class="form-group">
-                                <label for="escolhaLocal">Para qual cidade vamos hoje?</label>
-                                <select name="escolhaLocal" id="escolhaLocal" class="campos">
-                                    <option value="0">Escolha Uma Opção</option>
-                                    <option value="Aparecida">Aparecida</option>
-                                    <option value="Lorena">Lorena</option>
-                                    <option value="Guaratinguetá">Guaratinguetá</option>
-                                    <option value="São Paulo">São Paulo</option>
-                                    <option value="São José">São José</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div id="contentPessoas" class="form-group ocultar">
-                                <label for="qtdPessoas">Quantas Pessoas Vão?</label>
-                                <input id="qtdPessoas" name="qtdPessoas" type="number" class="form-control teste" />
-                            </div>
-                        </li>
-                        <li>
-                            <div id="contentTransporte" class="form-group ocultar">
-                                <label for="transporte">Qual a Forma de Transporte?</label>
-                                <select ID="transporte" name="transporte" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
-                                    <option Value="0">Escolha Uma Opção</option>
-                                    <option value="Carro">Carro</option>
-                                    <option Value="Micro-onibus">Micro-ônibus</option>
-                                    <option Value="Ônibus">Onibus</option>
-                                    <option Value="Rolê a pé">Rolê a pé</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div id="contentTipoPasseio" class="form-group ocultar">
-                                <label for="Passeio">Qual o Tipo de Passeio?</label>
-                                <select ID="tipoPasseio" name="tipoPasseio" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
-                                    <option Value="0">Escolha Uma Opção</option>
-                                    <option Value="Religioso">Religioso</option>
-                                    <option Value="Ambiental">Ambiental</option>
-                                    <option Value="Cultural">Cultural</option>
-                                    <option Value="Recreativo">Recreativo</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div id="contentData" class="form-group ocultar">
-                                <label for="data">Quando Vamos?</label>
-                                <input type="date" id="data" name="dia" min="0" class="campos" />
-                            </div>
-                        </li>
-                    </ul>
+<div class="row">
+    
+    <div class="position-relative p-3">
+        <div class="position-absolute fixed-top col-3 p-4"><!--Padding do form-->
+            <form method="post" action="~/Home/Index/">
+                <div class="contentContainer">
+                    <section class="left">
+                        <div class="inputContainer bg-light">
+                            <ul>
+                                <li>
+                                    <div class="form-group">
+                                        <label for="escolhaLocal">Para qual cidade vamos hoje?</label>
+                                        <select name="escolhaLocal" id="escolhaLocal" class="campos">
+                                            <option value="0">Escolha Uma Opção</option>
+                                            <option value="Aparecida">Aparecida</option>
+                                            <option value="Lorena">Lorena</option>
+                                            <option value="Guaratinguetá">Guaratinguetá</option>
+                                            <option value="São Paulo">São Paulo</option>
+                                            <option value="São José">São José</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="contentPessoas" class="form-group ocultar">
+                                        <label for="qtdPessoas">Quantas Pessoas Vão?</label>
+                                        <input id="qtdPessoas" name="qtdPessoas" type="number" class="form-control teste" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="contentTransporte" class="form-group ocultar">
+                                        <label for="transporte">Qual a Forma de Transporte?</label>
+                                        <select ID="transporte" name="transporte" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
+                                            <option Value="0">Escolha Uma Opção</option>
+                                            <option value="Carro">Carro</option>
+                                            <option Value="Micro-onibus">Micro-ônibus</option>
+                                            <option Value="Ônibus">Onibus</option>
+                                            <option Value="Rolê a pé">Rolê a pé</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="contentTipoPasseio" class="form-group ocultar">
+                                        <label for="Passeio">Qual o Tipo de Passeio?</label>
+                                        <select ID="tipoPasseio" name="tipoPasseio" ClientIDMode="Static" runat="server" CssClass="form-control" class="campos">
+                                            <option Value="0">Escolha Uma Opção</option>
+                                            <option Value="Religioso">Religioso</option>
+                                            <option Value="Ambiental">Ambiental</option>
+                                            <option Value="Cultural">Cultural</option>
+                                            <option Value="Recreativo">Recreativo</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div id="contentData" class="form-group ocultar">
+                                        <label for="data">Quando Vamos?</label>
+                                        <input type="date" id="data" name="dia" min="0" class="campos" />
+                                    </div>
+                                </li>
+                            </ul>
 
-                    <div id="contentSubmit" class="ocultar mt-5 text-center">
-                        <button class="btn my-2 my-sm-0 mr-3 confirma" id="" type="submit">Confirmar</button>
-                        <div class="msg"></div>
-                    </div>
+                            <div id="contentSubmit" class="ocultar mt-5 text-center">
+                                <button class="btn my-2 my-sm-0 mr-3 confirma" id="" type="submit">Confirmar</button>
+                                <div class="msg"></div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </form>
+        </div>
+        <div>
+            <section>
+                <!--Padding do mapa-->
+                <div id="corpo">
+                    <style>
+                        .map {
+                            width: 100%;
+                            height: 550px;
+                        }
+                    </style>
+                    <div id="map" class="map"></div>
+                    <script type="text/javascript">
+                        //settings
+                        var apiKey = '62c9302a168f23baac889de15';
+                        var targetDivId = 'map';
+                        var mapType = 'vector';
 
+                        var latitude = '-22.848'; //latitude of your map center
+                        var longitude = '-45.2274'; //longitude of your map center
+                        var startZoom = '14';
+
+                        //map code
+                        var center = [longitude, latitude];
+                        var map = MglMap(apiKey, targetDivId, center, startZoom, mapType);
+                    </script>
                 </div>
             </section>
-            <section class="right">
-                
-            </section>
-
-            
         </div>
-    </div>
-</form>
+     </div>
+</div>
+
 
 <div class="col-12 container p-5">
     <div class="col-12 text-center" style="font-size:35px;">
         <p><b>Principais Pontos Turísticos Brasileiros</b></p>
     </div>
-    <hr />
-    <div class="card-group col-12 row">
-        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
-            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
-            <div class="card-title" style="font-size:25px;">
-                <p><b>Lençóis Maranhenses</b></p>
+    <div><!-- Colocar o foreach aqui para mudar os pontos turisticos -->
+        <div class="card-group col-12 row">
+            <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+                <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+                <div class="card-title" style="font-size:25px;">
+                    <p><b>Lençóis Maranhenses</b></p>
+                </div>
+                <p class="text-left p-3" style="font-size:20px;">O Parque Nacional dos Lençóis Maranhenses é uma área protegida na costa atlântica norte do Brasil. É conhecido pela sua vasta paisagem desértica de grandes dunas de areia branca e pelas lagoas sazonais de água da chuva. A Lagoa Azul e a Lagoa Bonita são duas das maiores lagoas. O ecossistema diversificado do parque inclui pântanos de mangais. As cidades vizinhas de Barreirinhas e Santo Amaro do Maranhão servem de porta de entrada para o parque</p>
             </div>
-            <p class="text-left p-3" style="font-size:20px;">O Parque Nacional dos Lençóis Maranhenses é uma área protegida na costa atlântica norte do Brasil. É conhecido pela sua vasta paisagem desértica de grandes dunas de areia branca e pelas lagoas sazonais de água da chuva. A Lagoa Azul e a Lagoa Bonita são duas das maiores lagoas. O ecossistema diversificado do parque inclui pântanos de mangais. As cidades vizinhas de Barreirinhas e Santo Amaro do Maranhão servem de porta de entrada para o parque</p>
-        </div>
-        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
-            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
-            <div class="card-title" style="font-size:25px;">
-                <p><b>Cristo Redentor</b></p>
+            <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+                <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+                <div class="card-title" style="font-size:25px;">
+                    <p><b>Cristo Redentor</b></p>
+                </div>
+                <p class="text-left p-3" style="font-size:20px;">Cristo Redentor é uma estátua art déco que retrata Jesus Cristo, localizada no topo do morro do Corcovado, a 709 metros acima do nível do mar, com vista para parte considerável da cidade brasileira do Rio de Janeiro. Feito de concreto armado e pedra-sabão, tem trinta metros de altura (uma das maiores estátuas do mundo), sem contar os oito metros do pedestal. Seus braços se esticam por 28 metros de largura e a estrutura pesa 1145 toneladas.</p>
             </div>
-            <p class="text-left p-3" style="font-size:20px;">Cristo Redentor é uma estátua art déco que retrata Jesus Cristo, localizada no topo do morro do Corcovado, a 709 metros acima do nível do mar, com vista para parte considerável da cidade brasileira do Rio de Janeiro. Feito de concreto armado e pedra-sabão, tem trinta metros de altura (uma das maiores estátuas do mundo), sem contar os oito metros do pedestal. Seus braços se esticam por 28 metros de largura e a estrutura pesa 1145 toneladas.</p>
-        </div>
-        <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
-            <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
-            <div class="card-title" style="font-size:25px;">
-                <p><b>Cataratas Do Iguaçu</b></p>
-            </div>
-            <p class="text-left p-3" style="font-size:20px;">
-                Já imaginou apreciar a vista espetacular das Cataratas do Iguaçu;
-                uma das paisagens mais belas do mundo; em um ambiente onde
-                o ar puro da floresta se confunde com aromas suaves
-                de uma cozinha muito especial?
+            <div class="card col-md-4 col-sm-12 m-5" style="border-radius:10px;">
+                <img src="./Image/Basilica.jpg" alt="Avatar" style="width:100%">
+                <div class="card-title" style="font-size:25px;">
+                    <p><b>Cataratas Do Iguaçu</b></p>
+                </div>
+                <p class="text-left p-3" style="font-size:20px;">
+                    Já imaginou apreciar a vista espetacular das Cataratas do Iguaçu;
+                    uma das paisagens mais belas do mundo; em um ambiente onde
+                    o ar puro da floresta se confunde com aromas suaves
+                    de uma cozinha muito especial?
 
-                Esse lugar existe e está localizado no Parque Nacional do Iguaçu,
-                às margens do Rio Iguaçu, proporcionando vista única da parte
-                superior das famosas Cataratas.
-            </p>
+                    Esse lugar existe e está localizado no Parque Nacional do Iguaçu,
+                    às margens do Rio Iguaçu, proporcionando vista única da parte
+                    superior das famosas Cataratas.
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -131,4 +168,4 @@
 <script src="https://js.api.here.com/v3/3.1/mapsjs-service-legacy.js" defer type="text/javascript" charset="utf-8"></script>
 
 <!--<script src="../wwwroot/js/jquery-3.6.1.min.js"></script>-->
-<script src="./js/bootstrap.min.js></script>
+<script src="./js/bootstrap.min.js"></script>

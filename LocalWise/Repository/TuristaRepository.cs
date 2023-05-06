@@ -37,7 +37,7 @@ namespace LocalWise.Repository
 
         public async Task<IEnumerable<Turista>> GetByName(string name)
         {
-            return await _context.Turistas.Where(c => c.Pessoa.Nome.Contains(name)).ToListAsync();
+            return await _context.Turistas.Where(c => c.Pessoa.UserName.Contains(name)).ToListAsync();
         }
 
         public bool Save()

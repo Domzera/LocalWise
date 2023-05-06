@@ -4,19 +4,19 @@
 
 <form method="post" asp-action="Create">
     <div class="mb-3">
-        <label asp-for="Pessoa.Nome">Nome</label>
-        <input asp-for="Pessoa.Nome" placeholder="Nome">
-        <span asp-validation-for="Pessoa.Nome" class="text-danger"></span>
+        <label asp-for="Pessoa.UserName">Nome</label>
+        <input asp-for="Pessoa.UserName" placeholder="Nome">
+        <span asp-validation-for="Pessoa.UserName" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="Pessoa.Email">E-Mail</label>
         <input asp-for="Pessoa.Email" placeholder="Email">
-        <span asp-validation-for="Pessoa.Email" class="text-danger"></span>
+        <!--<span asp-validation-for="Pessoa.Email" class="text-danger"></span>-->
     </div>
     <div class="mb-3">
-        <label asp-for="Pessoa.Password">Senha</label>
-        <input asp-for="Pessoa.Password" placeholder="Senha">
-        <span asp-validation-for="Pessoa.Password" class="text-danger"></span>
+        <label asp-for="Pessoa.PasswordHash">Senha</label>
+        <input asp-for="Pessoa.PasswordHash" placeholder="Senha">
+        <span asp-validation-for="Pessoa.PasswordHash" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

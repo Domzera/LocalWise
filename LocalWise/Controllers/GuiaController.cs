@@ -51,9 +51,9 @@ namespace LocalWise.Controllers
                     //Aqui dentro temos que criar uma nova Pessoa para poder entrar com os dados
                     Pessoa = new Pessoa
                     {
-                        Nome=guiaVM.Pessoa.Nome,
+                        UserName=guiaVM.Pessoa.UserName,
                         Email=guiaVM.Pessoa.Email,
-                        Password=guiaVM.Pessoa.Password
+                        PasswordHash=guiaVM.Pessoa.PasswordHash
                     },
                     //Aqui coloca os dados normalmente
                     UrlPhoto = result.Url.ToString()

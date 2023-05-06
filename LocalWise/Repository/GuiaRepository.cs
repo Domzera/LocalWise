@@ -43,7 +43,7 @@ namespace LocalWise.Repository
 
         public async Task<Guia> GetByNameAsync(string name)
         {
-            return await _context.Guias.FirstOrDefaultAsync(n => n.Pessoa.Nome.Contains(name));
+            return await _context.Guias.FirstOrDefaultAsync(n => n.Pessoa.UserName.Contains(name));
         }
 
         public async Task<IEnumerable<Guia>> GetGuiaByCity(string city)

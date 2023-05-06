@@ -1,9 +1,10 @@
 ﻿using LocalWise.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LocalWise.Data
 {
-    public class LWDbContext : DbContext
+    public class LWDbContext : IdentityDbContext<Pessoa>
     {
         public LWDbContext(DbContextOptions<LWDbContext> options) : base(options) { }
 
