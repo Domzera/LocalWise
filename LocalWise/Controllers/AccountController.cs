@@ -1,4 +1,5 @@
-﻿using LocalWise.Data;
+﻿using CloudinaryDotNet.Actions;
+using LocalWise.Data;
 using LocalWise.Models;
 using LocalWise.ViewModel;
 using Microsoft.AspNetCore.Identity;
@@ -42,22 +43,28 @@ namespace LocalWise.Controllers
                     if(result.Succeeded)
                     {
                         //fazer o teste para descobrir o que o logado é( Turista ou Guia)
-                        var type = await _context.
-                        if (type=="Guia")
+                        //var type = await _context.Roles.Where(user.Email==IdentityUserRole<>);
+                        var type = _context.Pessoas.FirstOrDefault(i=>i.Email==user.Email);
+                        var role = _context.UserRoles.FirstOrDefault(r => r.UserId == user.Id).ToString;
+                        /*
+                        if (role=="Guia")
                         {
                             return RedirectToAction("index", "Guia");
                         }
-                        if (type == "Turista")
+                        if (role == "Turista")
                         {
                             return RedirectToAction("index", "Turista");
                         }
-                        if (type == "Guia" && type=="Turista")
+                        if (role == "Guia" && type=="Turista")
                         {
                             return RedirectToAction("index", "Account");
-                        }
+                        }*/
+                        
                     }
                 }
+                
             }
+            return RedirectToAction("index", "Turista");
         }
     }
 }

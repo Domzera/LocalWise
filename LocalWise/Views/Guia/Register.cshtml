@@ -1,10 +1,10 @@
 ﻿@using LocalWise.ViewModel;
-@model CreateGuiaViewModel
+@model RegisterGuiaViewModel
 
 @{
 }
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Index" enctype="multipart/form-data">
     <!-- o "enctype="multipart/form-data" é para poder usar as magens com o cloudinary -->
     <div class="mb-3">
         <label asp-for="Pessoa.UserName">Nome</label>
@@ -26,5 +26,5 @@
         <input asp-for="UrlPhoto" type="file" class="form-control" placeholder="Foto">
         <span asp-validation-for="UrlPhoto" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <input class="btn btn-primary" type="submit" value="Submit"/>
 </form>

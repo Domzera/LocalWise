@@ -9,18 +9,20 @@
         </div>
     </div>
     <div id="Centro" class="col-md-4">
-        <form asp-action="login">
+
+        <form asp-action="login" method="post">
+
             <!-- Arrumar para qual tela vai depois do Login -->
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <input type="email" id="form2Example1" class="form-control" />
-                <label class="form-label" for="form2Example1">Email address</label>
+                <input asp-for="Email" class="form-control" />
+                <label asp-for="Email" class="form-label"></label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" />
-                <label class="form-label" for="form2Example2">Password</label>
+                <input asp-for="Password" class="form-control" />
+                <label asp-for="Password" class="form-label"></label>
             </div>
 
             <!-- 2 column grid layout for inline styling -->
@@ -40,7 +42,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <input class="btn btn-primary btn-block mb-4" type="submit" value="Login"/>
         </form>
     </div>
     <div id="Esquerda" class="col-md-4">

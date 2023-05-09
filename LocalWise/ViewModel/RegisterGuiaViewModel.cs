@@ -2,7 +2,7 @@
 
 namespace LocalWise.ViewModel
 {
-    public class CreateGuiaViewModel
+    public class RegisterGuiaViewModel
     {
         public Pessoa Pessoa { get; set; }
         public IFormFile UrlPhoto { get; set; }
