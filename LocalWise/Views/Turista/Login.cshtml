@@ -1,0 +1,23 @@
+﻿@using LocalWise.ViewModel;
+@model LoginViewModel
+@{
+}
+
+<form method="post" asp-action="Create">
+    <div class="mb-3">
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" placeholder="Nome">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password">Senha</label>
+        <input asp-for="Password" placeholder="Senha">
+    </div>
+    <div class="mb-3">
+        <label asp-for="ComfimPassword">Confirme sua senha</label>
+        <input asp-for="ComfimPassword" placeholder="Senha">
+        <span asp-validation-for="ComfimPassword" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<a class="nav-link text-dark" asp-area="" asp-controller="Turista" asp-action="Create">Guia</a>

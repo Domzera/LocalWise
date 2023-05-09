@@ -33,14 +33,14 @@ namespace LocalWise.Controllers
             Guia guia = await _guiaRepository.GetByIdAsync(id);
             return View(guia);
         }
-        public IActionResult Create()
+        public IActionResult Register()
         {
             return View();
         }
 
         //Aqui começa o cadastro do Guia onde tem o Upload da foto
         [HttpPost]
-        public async Task<IActionResult> Create(CreateGuiaViewModel guiaVM)
+        public async Task<IActionResult> Register(CreateGuiaViewModel guiaVM)
         {
             if (ModelState.IsValid)
             {
