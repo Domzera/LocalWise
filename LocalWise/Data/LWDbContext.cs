@@ -21,5 +21,5 @@ namespace LocalWise.Data
         public DbSet<Photo> Photos { get; set; }
         public DbSet<PontoTuristico> PontoTuristicos { get; set; }
         public DbSet<Turista> Turistas { get; set; }
-}
+    }
 }

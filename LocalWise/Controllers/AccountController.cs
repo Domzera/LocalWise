@@ -33,7 +33,7 @@ namespace LocalWise.Controllers
             if(!ModelState.IsValid) {
                 return View(loginViewModel);
             } 
-            var user =await _userManager.FindByEmailAsync(loginViewModel.Email);
+            var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
             if(user !=null)
             {
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
