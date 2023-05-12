@@ -1,5 +1,4 @@
-﻿using LocalWise.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace LocalWise.ViewModel
 {
@@ -8,6 +7,8 @@ namespace LocalWise.ViewModel
         [Display(Name ="Email")]
         [Required(ErrorMessage ="É nescessário um Email!")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Senha invalida!")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
     }
 }

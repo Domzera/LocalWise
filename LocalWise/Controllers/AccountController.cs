@@ -1,5 +1,4 @@
-﻿using CloudinaryDotNet.Actions;
-using LocalWise.Data;
+﻿using LocalWise.Data;
 using LocalWise.Models;
 using LocalWise.ViewModel;
 using Microsoft.AspNetCore.Identity;
@@ -32,9 +31,9 @@ namespace LocalWise.Controllers
         {
             if(!ModelState.IsValid) {
                 return View(loginViewModel);
-            } 
+            }
             var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
-            if(user !=null)
+            if(user != null)
             {
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
                 if (passwordCheck)

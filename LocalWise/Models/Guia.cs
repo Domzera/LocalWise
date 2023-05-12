@@ -2,8 +2,7 @@
 
 namespace LocalWise.Models
 {
-    public class Guia
-    {
+    public class Guia     {
         public int Id { get; set; }
         public string? UrlPhoto { get; set; }
         public string? Ativo { get; set; }

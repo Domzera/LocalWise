@@ -5,14 +5,13 @@
     <div id="Direito" class="col-md-4">
         <div>
             <p>Ser guia é como ser o GPS humano de um grupo de pessoas perdidas em uma cidade desconhecida, só que muito mais divertido! É como se você fosse um super-herói que conhece todos os caminhos secretos e os melhores lugares para comer, beber e se divertir. É como se você fosse um mestre Jedi, guiando seus padawans em uma jornada emocionante através da cidade. Mas, acima de tudo, ser guia é compartilhar sua paixão pela cidade com outras pessoas, mostrando-lhes todas as coisas incríveis que ela tem a oferecer e criando memórias que durarão para sempre!</p>
-            <p>Registre-se como <a class="nav-link text-dark" asp-area="" asp-controller="Guia" asp-action="Register">Guia</a>!</p>
+            <p>Registre-se como <a asp-controller="Guia" asp-action="Register">Guia</a>!</p>
         </div>
     </div>
     <div id="Centro" class="col-md-4">
 
         <form asp-action="login" method="post">
 
-            <!-- Arrumar para qual tela vai depois do Login -->
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <input asp-for="Email" class="form-control" />
@@ -21,14 +20,14 @@
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" type="password" class="form-control" />
                 <label asp-for="Password" class="form-label"></label>
             </div>
 
             <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
+            <!--<div class="row mb-4">
                 <div class="col d-flex justify-content-center">
-                    <!-- Checkbox -->
+                    -- Checkbox --
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
                         <label class="form-check-label" for="form2Example31"> Remember me </label>
@@ -36,106 +35,19 @@
                 </div>
 
                 <div class="col">
-                    <!-- Simple link -->
+                    -- Simple link --
                     <a href="#!">Forgot password?</a>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Submit button -->
-            <input class="btn btn-primary btn-block mb-4" type="submit" value="Login"/>
+            <input class="btn btn-primary btn-block mb-4" type="submit" value="Login" />
         </form>
     </div>
     <div id="Esquerda" class="col-md-4">
         <div>
             <p>Ser turista é como ser um explorador em uma terra desconhecida, mas com uma câmera na mão e uma mala cheia de roupas que nunca usamos no dia a dia. É como se você fosse um personagem de um filme de aventura, descobrindo novas culturas, experimentando comidas exóticas e fazendo amizade com pessoas de todo o mundo. É como se você fosse um aprendiz de mago, coletando lembranças e relíquias para levar de volta para sua terra natal. Mas, acima de tudo, ser turista é deixar sua zona de conforto e se permitir ser surpreendido pelo desconhecido, criando histórias e experiências que te acompanharão para sempre!</p>
-            <p>Registre-se como <a class="nav-link text-dark" asp-area="" asp-controller="Turista" asp-action="Register">Turista!</a> !</p><a class="nav-link text-dark" asp-area="" asp-controller="Turista" asp-action="Register">Turista</a>
+            <p>Registre-se como <a asp-controller="Turista" asp-action="Register">Turista</a>!</p>
         </div>
     </div>
 </section>
-
-<div>
-    <h1>Copiei o codigo de baixo e fiz o de cima mais ou menos, cabe a você arrumar kkkkkkkkkS</h1>
-</div>
-
-<section class=" text-center text-lg-start">
-  <style>
-    .rounded-t-5 {
-      border-top-left-radius: 0.5rem;
-      border-top-right-radius: 0.5rem;
-    }
-  </style>
-
-  <div class="card mb-3">
-    <div class="row g-0 d-flex align-items-center">
-      <div class="col-lg-4 d-none d-lg-flex">
-          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
-               class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-          <a class="nav-link text-dark" asp-area="" asp-controller="Turista" asp-action="Register">Turista</a>
-      </div>
-      <div class="col-lg-4">
-        <div class="card-body py-5 px-md-5">
-          <form ><!-- Arrumar para qual tela vai depois do Login -->
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control" />
-              <label class="form-label" for="form2Example1">Email address</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control" />
-              <label class="form-label" for="form2Example2">Password</label>
-            </div>
-
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
-              <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                  <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div>
-              </div>
-
-              <div class="col">
-                <!-- Simple link -->
-                <a href="#!">Forgot password?</a>
-              </div>
-            </div>
-
-            <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-lg-4 d-none d-lg-flex">
-          <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
-               class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-          <a class="nav-link text-dark" asp-area="" asp-controller="Guia" asp-action="Register">Guia</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!--
-<form method="post" asp-action="Create">
-    <div class="mb-3">
-        <label asp-for="Email">Email</label>
-        <input asp-for="Email" placeholder="Nome">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Password">Senha</label>
-        <input asp-for="Password" placeholder="Senha">
-    </div>
-    <div class="mb-3">
-        <label asp-for="ComfimPassword">Confirme sua senha</label>
-        <input asp-for="ComfimPassword" placeholder="Senha">
-        <span asp-validation-for="ComfimPassword" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<a class="nav-link text-dark" asp-area="" asp-controller="Turista" asp-action="Register">Turista</a>
--->
