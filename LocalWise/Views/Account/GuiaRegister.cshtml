@@ -1,0 +1,30 @@
+﻿@using LocalWise.ViewModel;
+@model RegisterGuiaViewModel
+
+@{
+}
+
+<form method="post" asp-action="Register" enctype="multipart/form-data">
+    <!-- o "enctype="multipart/form-data" é para poder usar as magens com o cloudinary -->
+    <div class="mb-3">
+        <label asp-for="Pessoa.UserName">Nome</label>
+        <input asp-for="Pessoa.UserName" class="form-control" placeholder="Nome">
+        <span asp-validation-for="Pessoa.UserName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pessoa.Email">E-Mail</label>
+        <input asp-for="Pessoa.Email" class="form-control" placeholder="Email">
+        <!--<span asp-validation-for="Pessoa.Email" class="text-danger"></span>-->
+    </div>
+    <div class="mb-3">
+        <label asp-for="Pessoa.PasswordHash">Senha</label>
+        <input asp-for="Pessoa.PasswordHash" class="form-control" placeholder="Senha">
+        <span asp-validation-for="Pessoa.PasswordHash" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UrlPhoto">Foto do perfil</label>
+        <input asp-for="UrlPhoto" type="file" class="form-control" placeholder="Foto">
+        <span asp-validation-for="UrlPhoto" class="text-danger"></span>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Submit"/>
+</form>
