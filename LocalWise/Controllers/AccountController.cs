@@ -1,4 +1,5 @@
-﻿using LocalWise.Data;
+﻿using CloudinaryDotNet.Actions;
+using LocalWise.Data;
 using LocalWise.Models;
 using LocalWise.ViewModel;
 using Microsoft.AspNetCore.Identity;
@@ -45,23 +46,47 @@ namespace LocalWise.Controllers
                     if(result.Succeeded)
                     {
                         //fazer o teste para descobrir o que o logado é( Turista ou Guia)
-                        //var type = await _context.Roles.Where(user.Email==IdentityUserRole<>);
-                        var type = _context.Pessoas.FirstOrDefault(i=>i.Email==user.Email);
-                        var role = _context.UserRoles.FirstOrDefault(r => r.UserId == user.Id).ToString;
-                        /*
-                        if (role=="Guia")
+                        var type = await _userManager.GetRolesAsync(user);
+                        if (type[0] == UserRoles.Guia)
                         {
                             return RedirectToAction("index", "Guia");
                         }
-                        if (role == "Turista")
+                        if (type[0] == UserRoles.Turista)
                         {
                             return RedirectToAction("index", "Turista");
                         }
-                        if (role == "Guia" && type=="Turista")
+                        if (type[0] == UserRoles.GerenteLocal)
+                        {
+                            return RedirectToAction("index", "GerenteLocal");
+                        }
+                        if (type[0] == UserRoles.LocalWise)
+                        {
+                            return RedirectToAction("index", "LocalWise");
+                        }
+                        if (type[0] == UserRoles.Guia && type[0] == UserRoles.Turista)
                         {
                             return RedirectToAction("index", "Account");
+                        }
+
+                        /*
+                        switch (type[0])
+                        {
+                            case UserRoles.Guia : 
+                                return RedirectToAction("index", "Guia");
+                                break;
+                            case UserRoles.Turista: 
+                                return RedirectToAction("index", "Turista");
+                                break;
+                            case UserRoles.GerenteLocal:
+                                return RedirectToAction("index", "GerenteLocal");
+                                break;
+                            case UserRoles.LocalWise :
+                                return RedirectToAction("index", "LocalWise");
+                                break;
+                            default:
+                                return RedirectToAction("index", "Account");
+                                break;
                         }*/
-                        
                     }
                 }
                 
@@ -92,7 +117,8 @@ namespace LocalWise.Controllers
                 var newUserResponse = await _userManager.CreateAsync(newUser, registerTuristaViewModel.Senha);
                 if(newUserResponse.Succeeded)
                 {
-                    await _roleManager.CreateAsync(new IdentityRole(UserRoles.Turista));
+                    var role = await _roleManager.RoleExistsAsync(UserRoles.Turista);
+                    if(!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.Turista));
                     await _userManager.AddToRoleAsync(newUser,UserRoles.Turista);
                 }
                 return RedirectToAction("index", "Turista");
