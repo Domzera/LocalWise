@@ -81,3 +81,7 @@ C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\ob
 C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\obj\Debug\net7.0\LocalWise.pdb
 C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\obj\Debug\net7.0\LocalWise.genruntimeconfig.cache
 C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\obj\Debug\net7.0\ref\LocalWise.dll
+C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.dll
+C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll
+C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\bin\Debug\net7.0\Microsoft.AspNetCore.DataProtection.Extensions.dll
+C:\Users\luizc\OneDrive\Área de Trabalho\Fatec\LocalWise\LocalWise\LocalWise\bin\Debug\net7.0\System.Security.Cryptography.Xml.dll

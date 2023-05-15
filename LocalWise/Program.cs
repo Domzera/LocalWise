@@ -6,6 +6,7 @@ using LocalWise.Models;
 using LocalWise.Repository;
 using LocalWise.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,15 @@ builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie();
+
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(@"c:\localWise"))
+    .SetApplicationName("SharedCookieApp");
+
+builder.Services.ConfigureApplicationCookie(options =>{
+    options.Cookie.Name = "AspNet.SharedCookie";
+    //options.Cookie.Expiration.Value = 
+});
 
 var app = builder.Build();
 

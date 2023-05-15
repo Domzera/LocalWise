@@ -1,25 +1,22 @@
 ﻿@using LocalWise.ViewModel;
 @model RegisterGuiaViewModel
 
-@{
-}
-
 <form method="post" asp-action="Register" enctype="multipart/form-data">
     <!-- o "enctype="multipart/form-data" é para poder usar as magens com o cloudinary -->
     <div class="mb-3">
-        <label asp-for="Pessoa.UserName">Nome</label>
-        <input asp-for="Pessoa.UserName" class="form-control" placeholder="Nome">
-        <span asp-validation-for="Pessoa.UserName" class="text-danger"></span>
+        <label asp-for="Name">Nome</label>
+        <input asp-for="Name" class="form-control" placeholder="Nome">
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="mb-3">
-        <label asp-for="Pessoa.Email">E-Mail</label>
-        <input asp-for="Pessoa.Email" class="form-control" placeholder="Email">
+        <label asp-for="Email">E-Mail</label>
+        <input asp-for="Email" class="form-control" placeholder="Email">
         <!--<span asp-validation-for="Pessoa.Email" class="text-danger"></span>-->
     </div>
     <div class="mb-3">
-        <label asp-for="Pessoa.PasswordHash">Senha</label>
-        <input asp-for="Pessoa.PasswordHash" class="form-control" placeholder="Senha">
-        <span asp-validation-for="Pessoa.PasswordHash" class="text-danger"></span>
+        <label asp-for="Senha">Senha</label>
+        <input asp-for="Senha" class="form-control" placeholder="Senha">
+        <span asp-validation-for="Senha" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="UrlPhoto">Foto do perfil</label>

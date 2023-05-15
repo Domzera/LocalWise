@@ -1,6 +1,7 @@
 ﻿using LocalWise.Interfaces;
 using LocalWise.Models;
 using LocalWise.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -17,6 +18,7 @@ namespace LocalWise.Controllers
             _photoService = photoService;
             _photoRepository = photoRepository;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
