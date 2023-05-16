@@ -42,7 +42,21 @@ namespace LocalWise.Repository
         {
             //return await _context.Guias.Include(t=>t.Pessoa).ToListAsync();
             return await _signInManager.UserManager.Users.ToListAsync();
-            
+
+        }
+
+        public async Task<IEnumerable<Pessoa>> API_GetAll()
+        {
+         var us =  await _signInManager.UserManager.Users.Select(
+                u => new Pessoa
+                {
+                    Email = u.Email,
+                    DataCadastro = u.DataCadastro,
+                    UserName = u.UserName
+                }
+                ).ToListAsync();
+
+            return us;
         }
 
         public async Task<Pessoa> GetByIdAsync(string id)
@@ -69,5 +83,7 @@ namespace LocalWise.Repository
             //var saved = _signInManager.UserManager.Users.
             return saved > 0 ? true : false;
         }
+
+
     }
 }
