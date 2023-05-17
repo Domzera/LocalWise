@@ -12,18 +12,5 @@ namespace LocalWise.Controllers
         {
             return View();
         }
-
-        //public async Task<IEnumerable<Guia>> Index()
-        //{    
-        //    return (IEnumerable<Guia>)View(guia);
-        //}
-        //public IActionResult Detail()
-        //{
-        //    return View();
-        //}
-        //public IActionResult Register()
-        //{
-        //    return View();
-        //}
     }
 }

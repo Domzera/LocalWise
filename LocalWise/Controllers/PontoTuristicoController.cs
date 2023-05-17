@@ -29,6 +29,7 @@ namespace LocalWise.Controllers
             return View(pontoTuristico);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreatePontoTuristicoViewModel PontoTVM)
         {

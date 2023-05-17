@@ -81,9 +81,6 @@ namespace LocalWise.Controllers
             return RedirectToAction("index", "Home");
         }
 
-        //Tem que ter autorização para seguir!
-        [Authorize]
-
         //===> Controles do Turista <===
         //Tela de Registro do Turista
         public IActionResult TuristaRegister()
@@ -121,12 +118,14 @@ namespace LocalWise.Controllers
             return RedirectToAction("Login","Account");
         }
         //Tela de Edição do Turista
+        [Authorize]
         public IActionResult TuristaEdit()
         {
             var response = new TuristaEditViewModel();
             return View(response);
         }
         //Tela de Edição do Turista preenchido
+        [Authorize]
         public async Task<IActionResult> TuristaEdit(string id,TuristaEditViewModel TEViewModel)
         {
             if (!ModelState.IsValid)
@@ -147,12 +146,14 @@ namespace LocalWise.Controllers
 
         //===> Controles do Guia <===
         //Tela de Edição do Guia
+        [Authorize]
         public IActionResult GuiaEdit()
         {
             var resonse = new GuiaEditViewModel();
             return View(resonse);
         }
         //Tela de Edição do Guia preenchida
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> GuiaEdit(string id,GuiaEditViewModel GEViewModel)
         {
@@ -216,13 +217,15 @@ namespace LocalWise.Controllers
 
         //===> Controles do Gerente_Local <===
         //Tela de Edição do Gerente_Local
+        [Authorize]
         public IActionResult GerenteLocalEdit()
         {
             var resonse = new GerenteLocalEditViewModel();
             return View(resonse);
         }
         //Tela de Edição do Gerente_Local preenchida
-        [HttpPost, ActionName("GerenteLocalEdit")]
+        [HttpPost]
+        [Authorize]
         public async Task<IActionResult> GerenteLocalEdit(int id)
         {
             if (id == null)
@@ -254,8 +257,6 @@ namespace LocalWise.Controllers
             }
                 return RedirectToAction("Index", "GerenteLocal");
         }
-
-        //Fiz até aqui********************************************************************************************
         //Tela de Registro do Gerente_Local
         public IActionResult GerenteLocalRegister()
         {
@@ -264,35 +265,46 @@ namespace LocalWise.Controllers
         }
         //Tela de Registro do Gerente_Local preenchida
         [HttpPost]
-        public async Task<IActionResult> GerenteLocalRegister(RegisterGuiaViewModel registerGuiaViewModel)
+        public async Task<IActionResult> GerenteLocalRegister(RegisterGerenteLocalViewModel registerGerenteLocalViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(registerGuiaViewModel);
+                return View(registerGerenteLocalViewModel);
             }
-            var user = await _userManager.FindByEmailAsync(registerGuiaViewModel.Email);
+            var user = await _context.FindAsync<GerenteLocal>(registerGerenteLocalViewModel.RazaoSocial);
             if (user == null)
             {
-                var newUser = new Pessoa()
+                var newUser = new GerenteLocal()
                 {
-                    Email = registerGuiaViewModel.Email,
-                    UserName = registerGuiaViewModel.Name,
+                    RazaoSocial = registerGerenteLocalViewModel.RazaoSocial
+                };
+                var newUser2 = new Endereco()
+                {
+                    Logradouro = registerGerenteLocalViewModel.Logradouro,
+                    Numero = registerGerenteLocalViewModel.Numero,
+                    Bairro = registerGerenteLocalViewModel.Bairro,
+                    Cidade = registerGerenteLocalViewModel.Cidade,
+                    Cep = registerGerenteLocalViewModel.Cep,
+                    Estado = registerGerenteLocalViewModel.Estado,
+                };                
+                return RedirectToAction("index", "Guia");
+            }
+            var user2 = await _userManager.GetUserAsync(User);
+            if(user2 != null)
+            {
+                var senha = new Pessoa()
+                {
+                    Email = user2.Email,
                     DataCadastro = DateTime.Now
                 };
-                var newUserResponse = await _userManager.CreateAsync(newUser, registerGuiaViewModel.Senha);
-                if (newUserResponse.Succeeded)
+                var senha1 = await _userManager.CreateAsync(senha,registerGerenteLocalViewModel.Password);
+                if (senha1.Succeeded)
                 {
                     //Criar Função aqui para preenchimento da Role!
-                    var role = await _roleManager.RoleExistsAsync(UserRoles.Guia);
-                    if (!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.Guia));
-                    await _userManager.AddToRoleAsync(newUser, UserRoles.Guia);
+                    var role = await _roleManager.RoleExistsAsync(UserRoles.GerenteLocal);
+                    if (!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.GerenteLocal));
+                    await _userManager.AddToRoleAsync(senha, UserRoles.GerenteLocal);
                 }
-                var foto = await _photoService.AddPhotoAsync(registerGuiaViewModel.UrlPhoto);
-                var guia = new Guia()
-                {
-                    UrlPhoto = registerGuiaViewModel.UrlPhoto.ToString()
-                };
-                return RedirectToAction("index", "Guia");
             }
 
             return RedirectToAction("Login", "Account");
