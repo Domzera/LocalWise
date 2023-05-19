@@ -29,6 +29,8 @@ builder.Services.AddIdentity<Pessoa, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<LWDbContext>();
 
+builder.Services.AddControllersWithViews();//Para usar o Seed coloquei esse!
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

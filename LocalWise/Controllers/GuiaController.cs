@@ -10,6 +10,7 @@ namespace LocalWise.Controllers
         [Authorize]
         public IActionResult Index()
         {
+
             return View();
         }
     }

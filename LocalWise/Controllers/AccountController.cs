@@ -1,5 +1,6 @@
 ﻿using CloudinaryDotNet.Actions;
 using LocalWise.Data;
+using LocalWise.Data.Enum;
 using LocalWise.Interfaces;
 using LocalWise.Models;
 using LocalWise.ViewModel;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace LocalWise.Controllers
 {
@@ -33,24 +35,30 @@ namespace LocalWise.Controllers
         }
         public IActionResult Login()
         {
+
+            //Aqui vai buscar todas as coisas do filtro - mas tem que colocar no lugar certo
+            //var resultLinq = _context.PontoTuristicos
+            //    .Where(w=> w.Endereco.Cidade == "Guara"
+            //|| w.Itinerario.Transporte == Transporte.Onibus).ToList();
+
             var response = new LoginViewModel();
             return View(response);
         }
-        
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
-            if(!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return View(loginViewModel);
             }
             var user = await _userManager.FindByEmailAsync(loginViewModel.Email);
-            if(user != null)
+            if (user != null)
             {
                 var passwordCheck = await _userManager.CheckPasswordAsync(user, loginViewModel.Password);
                 if (passwordCheck)
                 {
                     var result = await _signInManager.PasswordSignInAsync(user, loginViewModel.Password, false, false);
-                    if(result.Succeeded)
+                    if (result.Succeeded)
                     {
                         //fazer o teste para descobrir o que o logado é( Turista ou Guia)
                         var type = await _userManager.GetRolesAsync(user);
@@ -68,7 +76,7 @@ namespace LocalWise.Controllers
                         }
                         if (type[0] == UserRoles.LocalWise)
                         {
-                            return RedirectToAction("index", "LocalWise");
+                            return RedirectToAction("index", "RegisterLocalWiseManager");
                         }
                         if (type[0] == UserRoles.Guia && type[0] == UserRoles.Turista)
                         {
@@ -76,10 +84,47 @@ namespace LocalWise.Controllers
                         }
                     }
                 }
-                
+
             }
             return RedirectToAction("index", "Home");
         }
+
+
+        //===> Registro dos Gerentes do LocalWise <===
+        //Tela de registro dos gerentes
+        public IActionResult RegisterLocalWiseManager()
+        {
+            var esponse = new RegisterLocalWiseManager();
+            return View(Response);
+        }
+        //Tela de Registro preenchida dos Gerentes
+        [HttpPost]
+        public async Task<IActionResult> RegisterLocalWiseManager(RegisterLocalWiseManagerViewModel registerLocalWiseManagerViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(registerLocalWiseManagerViewModel);
+            }
+            var user = await _userManager.FindByEmailAsync(registerLocalWiseManagerViewModel.Email);
+            if (user == null)
+            {
+                var newUser = new Pessoa()
+                {
+                    UserName = registerLocalWiseManagerViewModel.Nome,
+                    Email = registerLocalWiseManagerViewModel.Email
+                };
+                var newUserResponse = await _userManager.CreateAsync(newUser, registerLocalWiseManagerViewModel.senha);
+                if (newUserResponse.Succeeded)
+                {
+                    var role = await _roleManager.RoleExistsAsync(UserRoles.LocalWise);
+                    if (!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.LocalWise));
+                    await _userManager.AddToRoleAsync(newUser, UserRoles.LocalWise);
+                }
+                return RedirectToAction("Index", "RegisterLocalWiseManager");
+            }
+            return RedirectToAction("index", "Home");
+        }
+
 
         //===> Controles do Turista <===
         //Tela de Registro do Turista
@@ -97,7 +142,7 @@ namespace LocalWise.Controllers
                 return View(registerTuristaViewModel);
             }
             var user = await _userManager.FindByEmailAsync(registerTuristaViewModel.Email);
-            if(user == null)
+            if (user == null)
             {
                 var newUser = new Pessoa()
                 {
@@ -105,17 +150,17 @@ namespace LocalWise.Controllers
                     UserName = registerTuristaViewModel.Nome
                 };
                 var newUserResponse = await _userManager.CreateAsync(newUser, registerTuristaViewModel.Senha);
-                if(newUserResponse.Succeeded)
+                if (newUserResponse.Succeeded)
                 {
                     //Criar Função aqui para preenchimento da Role!
                     var role = await _roleManager.RoleExistsAsync(UserRoles.Turista);
-                    if(!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.Turista));
-                    await _userManager.AddToRoleAsync(newUser,UserRoles.Turista);
+                    if (!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.Turista));
+                    await _userManager.AddToRoleAsync(newUser, UserRoles.Turista);
                 }
                 return RedirectToAction("index", "Turista");
             }
 
-            return RedirectToAction("Login","Account");
+            return RedirectToAction("Login", "Account");
         }
         //Tela de Edição do Turista
         [Authorize]
@@ -126,7 +171,7 @@ namespace LocalWise.Controllers
         }
         //Tela de Edição do Turista preenchido
         [Authorize]
-        public async Task<IActionResult> TuristaEdit(string id,TuristaEditViewModel TEViewModel)
+        public async Task<IActionResult> TuristaEdit(string id, TuristaEditViewModel TEViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -144,6 +189,7 @@ namespace LocalWise.Controllers
             return View(ETViewModel);
         }
 
+
         //===> Controles do Guia <===
         //Tela de Edição do Guia
         [Authorize]
@@ -155,7 +201,7 @@ namespace LocalWise.Controllers
         //Tela de Edição do Guia preenchida
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> GuiaEdit(string id,GuiaEditViewModel GEViewModel)
+        public async Task<IActionResult> GuiaEdit(string id, GuiaEditViewModel GEViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -168,8 +214,8 @@ namespace LocalWise.Controllers
             var EGViewModel = new GuiaEditViewModel
             {
                 Name = guia.UserName,
-                Email=guia.Email,
-                
+                Email = guia.Email,
+
             };
             return View(EGViewModel);
         }
@@ -215,6 +261,7 @@ namespace LocalWise.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+
         //===> Controles do Gerente_Local <===
         //Tela de Edição do Gerente_Local
         [Authorize]
@@ -226,37 +273,39 @@ namespace LocalWise.Controllers
         //Tela de Edição do Gerente_Local preenchida
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> GerenteLocalEdit(int id)
-        {
-            if (id == null)
-            {
-                return View();
-            }
-            //-----Daqui para baixo
-            
-            var gLocal = await _context.GerenteLocals.FirstOrDefaultAsync(g => g.Id == id);
-            if (await TryUpdateModelAsync<GerenteLocal>(gLocal, "",
-                g => g.RazaoSocial,
-                g => g.Endereco.Logradouro,
-                g => g.Endereco.Numero,
-                g => g.Endereco.Bairro,
-                g => g.Endereco.Cidade,
-                g => g.Endereco.Cep,
-                g => g.Endereco.Estado
-                ))
-            {
-                try
-                {
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("index", "GerenteLocal");
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("", "Unable to save changes!");
-                }
-            }
-                return RedirectToAction("Index", "GerenteLocal");
-        }
+        //public async Task<IActionResult> GerenteLocalEdit(int id)
+
+        //COPIAR O EDIT DO TURISTA!!!!!!!
+
+        //{
+        //    if (id == null)
+        //    {
+        //        return View();
+        //    }
+        //    //-----Daqui para baixo
+        //    var gLocal = await _context.GerenteLocals.FirstOrDefaultAsync(g => g.Id == id);
+        //    if (await TryUpdateModelAsync<GerenteLocalEditViewModel>(gLocal, "",
+        //        g => g.RazaoSocial,
+        //        g => g.Logradouro,
+        //        g => g.Numero,
+        //        g => g.Bairro,
+        //        g => g.Cidade,
+        //        g => g.Cep,
+        //        g => g.Estado
+        //        ))
+        //    {
+        //        try
+        //        {
+        //            await _context.SaveChangesAsync();
+        //            return RedirectToAction("index", "GerenteLocal");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ModelState.AddModelError("", "Unable to save changes!");
+        //        }
+        //    }
+        //        return RedirectToAction("Index", "GerenteLocal");
+        //}
         //Tela de Registro do Gerente_Local
         public IActionResult GerenteLocalRegister()
         {
@@ -274,7 +323,7 @@ namespace LocalWise.Controllers
             var user = await _context.FindAsync<GerenteLocal>(registerGerenteLocalViewModel.RazaoSocial);
             if (user == null)
             {
-                var newUser = new GerenteLocal()
+                var newUser = new GerenteLocalEditViewModel()
                 {
                     RazaoSocial = registerGerenteLocalViewModel.RazaoSocial
                 };
@@ -286,18 +335,18 @@ namespace LocalWise.Controllers
                     Cidade = registerGerenteLocalViewModel.Cidade,
                     Cep = registerGerenteLocalViewModel.Cep,
                     Estado = registerGerenteLocalViewModel.Estado,
-                };                
+                };
                 return RedirectToAction("index", "Guia");
             }
             var user2 = await _userManager.GetUserAsync(User);
-            if(user2 != null)
+            if (user2 != null)
             {
                 var senha = new Pessoa()
                 {
                     Email = user2.Email,
                     DataCadastro = DateTime.Now
                 };
-                var senha1 = await _userManager.CreateAsync(senha,registerGerenteLocalViewModel.Password);
+                var senha1 = await _userManager.CreateAsync(senha, registerGerenteLocalViewModel.Password);
                 if (senha1.Succeeded)
                 {
                     //Criar Função aqui para preenchimento da Role!
@@ -308,6 +357,40 @@ namespace LocalWise.Controllers
             }
 
             return RedirectToAction("Login", "Account");
+        }
+
+
+        // ====>  Aqui é o controle dos LocalWiser´s e registros!  <====
+        [HttpPost]
+        public IActionResult LWRegisterManager()
+        {
+            var response = new LWRegisterManagerViewModel();
+            return View(response);
+        }
+        public async Task<IActionResult> LWRegisterManager(LWRegisterManagerViewModel LWRMVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(null);//Arrumar
+            }
+            var user = await _userManager.FindByEmailAsync(LWRMVM.Email);
+            if (user != null)
+            {
+                TempData["Error"] = "This email address is alread in use";
+                return View(LWRMVM);
+            }
+
+            var newUser = new Pessoa()
+            {
+                UserName = LWRMVM.Nome,
+                Email = LWRMVM.Email
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, LWRMVM.Senha);
+            if(newUserResponse != null)
+            {
+                await _userManager.AddToRoleAsync(newUser, UserRoles.LocalWise);
+            }
+            return View(LWRMVM);
         }
     }
 }

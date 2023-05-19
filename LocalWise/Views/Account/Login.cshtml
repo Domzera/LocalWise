@@ -44,13 +44,8 @@
             <input class="btn btn-primary btn-block mb-4" type="submit" value="Login" />
             <br />
             <br />
-            <script>
-                var teste = sessionStorage.User;
-                if(teste == "Turista"){
-                    document.getElementById("reg").innerHTML = teste;
-                }
-            </script>
             <p>Registre - se como <a asp-controller="Account" asp-action="TuristaRegister"> Turista </a>!</p>
+            <p>Registre - se como <a asp-controller="Account" asp-action="GuiaRegister"> Guia </a>!</p>
         </form>
     </div>
     <div id="Esquerda" class="col-md-4">
