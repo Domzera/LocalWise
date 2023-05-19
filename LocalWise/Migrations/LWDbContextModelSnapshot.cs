@@ -279,6 +279,9 @@ namespace LocalWise.Migrations
                     b.Property<int?>("GuiaId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TipoPasseio")
+                        .HasColumnType("int");
+
                     b.Property<int>("Transporte")
                         .HasColumnType("int");
 

@@ -1,0 +1,58 @@
+﻿@using LocalWise.ViewModel;
+@model RegisterGerenteLocalViewModel
+
+<h1>Registro de LocalWiser´s</h1>
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <form method="post" asp-action="RegisterLocalWiseManager">
+            <!-- o "enctype="multipart/form-data" é para poder usar as magens com o cloudinary -->
+            <div class="mb-3">
+                <label asp-for="RazaoSocial">RazaoSocial</label>
+                <input asp-for="RazaoSocial" class="form-control" placeholder="Nome">
+                <span asp-validation-for="RazaoSocial" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email">E-Mail</label>
+                <input asp-for="Email" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Password">Senha</label>
+                <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Logradouro">Logradouro</label>
+                <input asp-for="Logradouro" class="form-control" placeholder="Logradouro">
+                <span asp-validation-for="Logradouro" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Numero">Numero</label>
+                <input asp-for="Numero" class="form-control" placeholder="Numero">
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Bairro">Bairro</label>
+                <input asp-for="Bairro" class="form-control" placeholder="Bairro">
+                <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Cidade">Cidade</label>
+                <input asp-for="Cidade" class="form-control" placeholder="Cidade">
+                <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Cep">CEP</label>
+                <input asp-for="Cep" class="form-control" placeholder="CEP">
+                <span asp-validation-for="Cep" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Estado">Estado</label>
+                <input asp-for="Estado" class="btn btn-secondary dropdown-toggle form-control" placeholder="Estado">
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </form>
+    </div>
+</div>

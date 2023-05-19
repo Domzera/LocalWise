@@ -20,10 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxHZXJlbnRlTG9jYWxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/GerenteLocalRegister.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxHZXJlbnRlTG9jYWxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/GuiaEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxHdWlhRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/RegisterGerenteLocal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlckdlcmVudGVMb2NhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/RegisterLocalWiseManager.cshtml]
@@ -72,8 +72,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXFJlZ2lzdGVyLmNzaHRtbA==
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/TesteterGerenteLocal01.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VyZW50ZUxvY2FsXFRlc3RldGVyR2VyZW50ZUxvY2FsMDEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Guia/Detail.cshtml]

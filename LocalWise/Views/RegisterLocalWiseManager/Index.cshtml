@@ -1,9 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<Pessoa>
 
 <h1>LocalWise - Chefes</h1>
+<br />
+<br />
 
-<a asp-controller="RegistroGerenteLocal" asp-action="Account">Registrar novo Gerente</a>
+<div class="row-4">
+    <div class="col-4">
+        <a class="btn btn-dark" asp-controller="Account" asp-action="RegisterLocalWiseManager">Registrar-se como LOCALWISER</a>
+        <!--<a class="btn btn-dark" asp-controller="Account" asp-action="RegisterLocalWiseManager">Edit</a>-->
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div class="row-4">
+    <div class="col-4">
+        <a class="btn btn-dark" asp-controller="Account" asp-action="RegisterGerenteLocal">Registrar novo Gerente Local</a>
+    </div>
+    
+</div>
+<br />
+<br />
+@*<div class="row">
+    <div class="col-4">
+        @foreach(var item in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">LocalWiser</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.UserName</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.NormalizedUserName</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.Email</h6>
+                    <a href="#" class="card-link">Edit</a>
+                </div>
+            </div>
+        }
+    </div>
+*@</div>

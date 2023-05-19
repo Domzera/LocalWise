@@ -94,8 +94,8 @@ namespace LocalWise.Controllers
         //Tela de registro dos gerentes
         public IActionResult RegisterLocalWiseManager()
         {
-            var esponse = new RegisterLocalWiseManager();
-            return View(Response);
+            var response = new RegisterLocalWiseManagerViewModel();
+            return View(response);
         }
         //Tela de Registro preenchida dos Gerentes
         [HttpPost]
@@ -111,9 +111,10 @@ namespace LocalWise.Controllers
                 var newUser = new Pessoa()
                 {
                     UserName = registerLocalWiseManagerViewModel.Nome,
-                    Email = registerLocalWiseManagerViewModel.Email
+                    Email = registerLocalWiseManagerViewModel.Email,
+                    PasswordHash = registerLocalWiseManagerViewModel.Password
                 };
-                var newUserResponse = await _userManager.CreateAsync(newUser, registerLocalWiseManagerViewModel.senha);
+                var newUserResponse = await _userManager.CreateAsync(newUser);
                 if (newUserResponse.Succeeded)
                 {
                     var role = await _roleManager.RoleExistsAsync(UserRoles.LocalWise);
@@ -271,8 +272,8 @@ namespace LocalWise.Controllers
             return View(resonse);
         }
         //Tela de Edição do Gerente_Local preenchida
-        [HttpPost]
-        [Authorize]
+        //[HttpPost]
+        //[Authorize]
         //public async Task<IActionResult> GerenteLocalEdit(int id)
 
         //COPIAR O EDIT DO TURISTA!!!!!!!
@@ -307,14 +308,14 @@ namespace LocalWise.Controllers
         //        return RedirectToAction("Index", "GerenteLocal");
         //}
         //Tela de Registro do Gerente_Local
-        public IActionResult GerenteLocalRegister()
+        public IActionResult RegisterGerenteLocal()
         {
-            var response = new RegisterGuiaViewModel();
+            var response = new RegisterGerenteLocalViewModel();
             return View(response);
         }
         //Tela de Registro do Gerente_Local preenchida
         [HttpPost]
-        public async Task<IActionResult> GerenteLocalRegister(RegisterGerenteLocalViewModel registerGerenteLocalViewModel)
+        public async Task<IActionResult> RegisterGerenteLocal(RegisterGerenteLocalViewModel registerGerenteLocalViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -323,7 +324,7 @@ namespace LocalWise.Controllers
             var user = await _context.FindAsync<GerenteLocal>(registerGerenteLocalViewModel.RazaoSocial);
             if (user == null)
             {
-                var newUser = new GerenteLocalEditViewModel()
+                var newUser = new RegisterGerenteLocalViewModel()
                 {
                     RazaoSocial = registerGerenteLocalViewModel.RazaoSocial
                 };
@@ -336,7 +337,7 @@ namespace LocalWise.Controllers
                     Cep = registerGerenteLocalViewModel.Cep,
                     Estado = registerGerenteLocalViewModel.Estado,
                 };
-                return RedirectToAction("index", "Guia");
+                return RedirectToAction("index", "GerenteLocal");
             }
             var user2 = await _userManager.GetUserAsync(User);
             if (user2 != null)
