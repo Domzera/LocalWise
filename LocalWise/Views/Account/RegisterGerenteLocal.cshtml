@@ -1,7 +1,8 @@
-﻿@using LocalWise.ViewModel;
+﻿@using LocalWise.Data.Enum;
+@using LocalWise.ViewModel;
 @model RegisterGerenteLocalViewModel
 
-<h1>Registro de LocalWiser´s</h1>
+<h1>Registro de Gerente Local</h1>
 
 <div class="row">
     <div class="col-md-8 offset-2">
@@ -49,7 +50,8 @@
             </div>
             <div class="mb-3">
                 <label asp-for="Estado">Estado</label>
-                <input asp-for="Estado" class="btn btn-secondary dropdown-toggle form-control" placeholder="Estado">
+                <select asp-for="Estado" class="btn btn-secondary dropdown-toggle form-control" asp-items="@Html.GetEnumSelectList<Estados>()">
+                </select>
                 <span asp-validation-for="Estado" class="text-danger"></span>
             </div>
             <input class="btn btn-primary" type="submit" value="Submit" />

@@ -89,8 +89,8 @@ namespace LocalWise.Controllers
             return RedirectToAction("index", "Home");
         }
 
-
         //===> Registro dos Gerentes do LocalWise <===
+
         //Tela de registro dos gerentes
         public IActionResult RegisterLocalWiseManager()
         {
@@ -111,10 +111,9 @@ namespace LocalWise.Controllers
                 var newUser = new Pessoa()
                 {
                     UserName = registerLocalWiseManagerViewModel.Nome,
-                    Email = registerLocalWiseManagerViewModel.Email,
-                    PasswordHash = registerLocalWiseManagerViewModel.Password
+                    Email = registerLocalWiseManagerViewModel.Email
                 };
-                var newUserResponse = await _userManager.CreateAsync(newUser);
+                var newUserResponse = await _userManager.CreateAsync(newUser,registerLocalWiseManagerViewModel.Password);
                 if (newUserResponse.Succeeded)
                 {
                     var role = await _roleManager.RoleExistsAsync(UserRoles.LocalWise);
@@ -128,6 +127,7 @@ namespace LocalWise.Controllers
 
 
         //===> Controles do Turista <===
+
         //Tela de Registro do Turista
         public IActionResult TuristaRegister()
         {
@@ -192,6 +192,7 @@ namespace LocalWise.Controllers
 
 
         //===> Controles do Guia <===
+
         //Tela de Edição do Guia
         [Authorize]
         public IActionResult GuiaEdit()
@@ -264,6 +265,7 @@ namespace LocalWise.Controllers
 
 
         //===> Controles do Gerente_Local <===
+
         //Tela de Edição do Gerente_Local
         [Authorize]
         public IActionResult GerenteLocalEdit()
@@ -272,43 +274,29 @@ namespace LocalWise.Controllers
             return View(resonse);
         }
         //Tela de Edição do Gerente_Local preenchida
-        //[HttpPost]
-        //[Authorize]
-        //public async Task<IActionResult> GerenteLocalEdit(int id)
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> GerenteLocalEdit(string id)
 
-        //COPIAR O EDIT DO TURISTA!!!!!!!
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Fail to edit");
+                return View("","");
+            }
+            //------Daqui para baixo
+            var turista = await _userManager.FindByIdAsync(id);
+            if (turista == null) return View("Error");
+            var ETViewModel = new RegisterTuristaViewModel
+            {
+                Nome = turista.UserName,
+                Email = turista.Email
+            };
+            return View(ETViewModel);
+}
 
-        //{
-        //    if (id == null)
-        //    {
-        //        return View();
-        //    }
-        //    //-----Daqui para baixo
-        //    var gLocal = await _context.GerenteLocals.FirstOrDefaultAsync(g => g.Id == id);
-        //    if (await TryUpdateModelAsync<GerenteLocalEditViewModel>(gLocal, "",
-        //        g => g.RazaoSocial,
-        //        g => g.Logradouro,
-        //        g => g.Numero,
-        //        g => g.Bairro,
-        //        g => g.Cidade,
-        //        g => g.Cep,
-        //        g => g.Estado
-        //        ))
-        //    {
-        //        try
-        //        {
-        //            await _context.SaveChangesAsync();
-        //            return RedirectToAction("index", "GerenteLocal");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            ModelState.AddModelError("", "Unable to save changes!");
-        //        }
-        //    }
-        //        return RedirectToAction("Index", "GerenteLocal");
-        //}
-        //Tela de Registro do Gerente_Local
-        public IActionResult RegisterGerenteLocal()
+//Tela de Registro do Gerente_Local
+public IActionResult RegisterGerenteLocal()
         {
             var response = new RegisterGerenteLocalViewModel();
             return View(response);
