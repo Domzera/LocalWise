@@ -24,10 +24,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxHdWlhRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/GuiaRegister.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxHdWlhUmVnaXN0ZXIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,16 +44,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlckdlcmVudGVMb2NhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/RegisterGuia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlckd1aWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/RegisterLocalWiseManager.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlckxvY2FsV2lzZU1hbmFnZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/TuristaEdit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUdXJpc3RhRWRpdC5jc2h0bWw=
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/RegisterTurista.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3RlclR1cmlzdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/TuristaRegister.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUdXJpc3RhUmVnaXN0ZXIuY3NodG1s
+[C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/Account/TuristaEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxUdXJpc3RhRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luizc/OneDrive/Área de Trabalho/Fatec/LocalWise/LocalWise/LocalWise/Views/GerenteLocal/Detail.cshtml]

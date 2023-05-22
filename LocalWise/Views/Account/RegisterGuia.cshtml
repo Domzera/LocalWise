@@ -1,7 +1,7 @@
 ﻿@using LocalWise.ViewModel;
 @model RegisterGuiaViewModel
 
-<form method="post" asp-action="Register" enctype="multipart/form-data">
+<form method="post" asp-action="RegisterGuia" enctype="multipart/form-data">
     <!-- o "enctype="multipart/form-data" é para poder usar as magens com o cloudinary -->
     <div class="mb-3">
         <label asp-for="Name">Nome</label>
@@ -11,11 +11,11 @@
     <div class="mb-3">
         <label asp-for="Email">E-Mail</label>
         <input asp-for="Email" class="form-control" placeholder="Email">
-        <!--<span asp-validation-for="Pessoa.Email" class="text-danger"></span>-->
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <div class="mb-3">
         <label asp-for="Senha">Senha</label>
-        <input asp-for="Senha" class="form-control" placeholder="Senha">
+        <input asp-for="Senha" type="password" class="form-control" />
         <span asp-validation-for="Senha" class="text-danger"></span>
     </div>
     <div class="mb-3">

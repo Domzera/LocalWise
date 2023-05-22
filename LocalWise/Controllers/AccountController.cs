@@ -111,6 +111,7 @@ namespace LocalWise.Controllers
                 var newUser = new Pessoa()
                 {
                     UserName = registerLocalWiseManagerViewModel.Nome,
+                    DataCadastro = DateTime.Now,
                     Email = registerLocalWiseManagerViewModel.Email
                 };
                 var newUserResponse = await _userManager.CreateAsync(newUser,registerLocalWiseManagerViewModel.Password);
@@ -129,14 +130,14 @@ namespace LocalWise.Controllers
         //===> Controles do Turista <===
 
         //Tela de Registro do Turista
-        public IActionResult TuristaRegister()
+        public IActionResult RegisterTurista()
         {
             var response = new RegisterTuristaViewModel();
             return View(response);
         }
         //Tela de Registro peenchida do Turista
         [HttpPost]
-        public async Task<IActionResult> TuristaRegister(RegisterTuristaViewModel registerTuristaViewModel)
+        public async Task<IActionResult> RegisterTurista(RegisterTuristaViewModel registerTuristaViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -148,6 +149,7 @@ namespace LocalWise.Controllers
                 var newUser = new Pessoa()
                 {
                     Email = registerTuristaViewModel.Email,
+                    DataCadastro = DateTime.Now,
                     UserName = registerTuristaViewModel.Nome
                 };
                 var newUserResponse = await _userManager.CreateAsync(newUser, registerTuristaViewModel.Senha);
@@ -221,15 +223,16 @@ namespace LocalWise.Controllers
             };
             return View(EGViewModel);
         }
+        
         //Tela de Registro do Guia
-        public IActionResult GuiaRegister()
+        public IActionResult RegisterGuia()
         {
             var response = new RegisterGuiaViewModel();
             return View(response);
         }
         //Tela de Registro do Guia preenchida
         [HttpPost]
-        public async Task<IActionResult> GuiaRegister(RegisterGuiaViewModel registerGuiaViewModel)
+        public async Task<IActionResult> RegisterGuia(RegisterGuiaViewModel registerGuiaViewModel)
         {
             if (!ModelState.IsValid)
             {
