@@ -6,7 +6,10 @@ namespace LocalWise.Data
 {
     public class LWDbContext : IdentityDbContext<Pessoa>
     {
-        public LWDbContext(DbContextOptions<LWDbContext> options) : base(options) { }
+        public LWDbContext(DbContextOptions<LWDbContext> options) : base(options)
+        {
+
+        }
 
         public DbSet<Agenda> Agendas { get; set; }
         public DbSet<ComentarioAvaliacao> ComentarioAvaliacaos  { get; set; }

@@ -295,8 +295,8 @@ namespace LocalWise.Controllers
             return View(ETViewModel);
 }
 
-//Tela de Registro do Gerente_Local
-public IActionResult RegisterGerenteLocal()
+        //Tela de Registro do Gerente_Local
+        public IActionResult RegisterGerenteLocal()
         {
             var response = new RegisterGerenteLocalViewModel();
             return View(response);
@@ -309,43 +309,38 @@ public IActionResult RegisterGerenteLocal()
             {
                 return View(registerGerenteLocalViewModel);
             }
-            var user = await _context.FindAsync<GerenteLocal>(registerGerenteLocalViewModel.RazaoSocial);
+            //var user = await _context.FindAsync<GerenteLocal>(registerGerenteLocalViewModel.RazaoSocial);
+            var user = await _userManager.FindByEmailAsync(registerGerenteLocalViewModel.Email);
             if (user == null)
             {
                 var newUser = new RegisterGerenteLocalViewModel()
                 {
-                    RazaoSocial = registerGerenteLocalViewModel.RazaoSocial
-                };
-                var newUser2 = new Endereco()
-                {
+                    
+                    RazaoSocial = registerGerenteLocalViewModel.RazaoSocial,
                     Logradouro = registerGerenteLocalViewModel.Logradouro,
                     Numero = registerGerenteLocalViewModel.Numero,
                     Bairro = registerGerenteLocalViewModel.Bairro,
                     Cidade = registerGerenteLocalViewModel.Cidade,
                     Cep = registerGerenteLocalViewModel.Cep,
-                    Estado = registerGerenteLocalViewModel.Estado,
+                    Estado = registerGerenteLocalViewModel.Estado
                 };
-                return RedirectToAction("index", "GerenteLocal");
-            }
-            var user2 = await _userManager.GetUserAsync(User);
-            if (user2 != null)
-            {
-                var senha = new Pessoa()
+                await _context.SaveChangesAsync();
+                var newUserResponse = new Pessoa()
                 {
-                    Email = user2.Email,
+                    Email = registerGerenteLocalViewModel.Email,
+                    UserName = registerGerenteLocalViewModel.RazaoSocial,
                     DataCadastro = DateTime.Now
                 };
-                var senha1 = await _userManager.CreateAsync(senha, registerGerenteLocalViewModel.Password);
-                if (senha1.Succeeded)
+                var senha = await _userManager.CreateAsync(newUserResponse, registerGerenteLocalViewModel.Password);
+                if (senha.Succeeded)
                 {
-                    //Criar Função aqui para preenchimento da Role!
                     var role = await _roleManager.RoleExistsAsync(UserRoles.GerenteLocal);
                     if (!role) await _roleManager.CreateAsync(new IdentityRole(UserRoles.GerenteLocal));
-                    await _userManager.AddToRoleAsync(senha, UserRoles.GerenteLocal);
+                    await _userManager.AddToRoleAsync(newUserResponse,UserRoles.GerenteLocal);
                 }
+                return RedirectToAction("Index", "GerenteLocal");
             }
-
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "home");
         }
 
 
